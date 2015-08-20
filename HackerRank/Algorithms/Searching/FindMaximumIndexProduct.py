@@ -1,4 +1,6 @@
-# Enter your code here. Read input from STDIN. Print output to STDOUT\
+# @Author   : Ganesh Satpute
+# @Email    : ghsatpute@gmail.com
+# @Date     : 24 May 2015, 09:22 PM
 
 numTestCases = int(raw_input())
 
