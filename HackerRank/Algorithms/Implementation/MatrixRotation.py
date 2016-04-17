@@ -1,3 +1,5 @@
+# Few non-ascii characters came due to copy-paste of problem statement so changing encoding to utf-8.
+# -*- coding: utf-8 -*-
 # @Author   : Ganesh Satpute
 # @Email    : ghsatpute@gmail.com
 # @Time     : 27 Feb 2016, 09:240 PM
@@ -26,7 +28,7 @@ Print the rotated matrix.
 Constraints 
 2 <= M, N <= 300 
 1 <= R <= 109 
-min(M, N) % 2 == 0 
+min(M, N) % 2 == 0
 1 <= aij <= 108, where i ∈ [1..M] & j ∈ [1..N]
 
 Sample Input #00
@@ -112,14 +114,37 @@ Sample Case #03: As all elements are same, any rotation will reflect the same ma
 """
 
 def print_matrix(mat):
-    #print "--------------------"
     for i in range(len(mat)):
         for j in range(len(mat[i])):
             print mat[i][j],
         print ""
-    #print "--------------------"
 
-def read_matrix(num_rows, num_cols):
+
+def read_input_from_file(filename):
+    """Reads input from from file for this problem.
+    Format would be something like
+    m n r
+    <---- m1 ----->
+    <---- m2 ----->
+    ...
+    <-----mn ----->
+
+    :param filename: Name of the file from which input is to be read.
+    :return: number of rows, number of columns, number of rotations to be made, and matrix
+    """
+    mat = []
+    f = open(filename)
+    m, n, r = map(int, f.readline().split(' '))
+    if f is not None:
+        for line in f:
+            mat.append(list(map(int, line.split(' '))))
+        return mat, m, n, r
+    else:
+        print "Could not read file"
+        raise("Could not read file")
+
+
+def read_input_from_stdin():
     """
     Reads matrix from the standard output
     :param num_rows: number of rows to be read
@@ -128,80 +153,172 @@ def read_matrix(num_rows, num_cols):
     :type num_cols: int
     :return : matrix of dimensions num_rows x num_cols
     """
-    mat = [[0] * num_cols for j in range(num_rows)]
-    #print mat
-    for j in range(num_rows):
+    m, n, r = map(int, raw_input().split(' '))
+    mat = [[0 for i in range(n)] for j in range(m)]
+    for j in range(m):
         mat[j] = list(map(int, raw_input().split(' ')))
-    #print mat
-    return mat
+    return mat, m, n, r
 
-def rotate(mat, num_rows, num_cols, boundary, rotate_by):
+
+def rotate(mat, rows, cols, boundary, rotate_by):
+    """
+    This method will rotate the matrix as given in the problem statement. This method will be recursively called.
+    :param mat: Matrix which is to be rotated
+    :param rows, cols: Number of rows and columns in the matrix.
+    :param boundary: There will be multiple rectangle in the matrix along which we will rotate the elements.
+    :param rotate_by: Amount by which we will rotate the matrix.
+    """
+
+    """
+        Matrix(rows x column)
+    Inner matrix with vertices (left, top), (left, bottom), (right, bottom), and (right, top)
+     ___________________________________
+    |                ^    ^             |
+                     |    |             |
+    |               top   |             |
+    |               ______|____         |
+    |            |        |             |
+    |<---left--->|        |   |         |
+    |<-----------|---right|-->|         |
+    |            |        |   |         |
+    |            |    bottom  |         |
+    |            ____________ |         |
+    |                                   |
+    |___________________________________|
+
+            Figure 1: Matrix and perimeters
+    """
     # Define boundaries on which matrix to rotate
     left = 0 + boundary
-    right = num_cols - boundary
+    right = cols - boundary - 1  # Coz zero-indexed
     top = 0 + boundary
-    bottom = num_rows - boundary
-    rotate_by = rotate_by % (num_rows * num_cols)
-    
-    if (left >= right ) or ( top >= bottom):
-        return
-    
-    for i in range(rotate_by):
-        rotate_by_1(mat, left, right, top, bottom)
-    #print "=================================="
-    rotate(mat, num_rows, num_cols, boundary + 1, rotate_by)
-    #print "=================================="
-    #return mat
-             
-def rotate_by_1(mat, left, right, top, bottom):
-    #print top, left, bottom, right
-    # Start from top - left, increment top while 
-    i = top # row index
-    j = left # column index
-    back = mat[i][j]
-    # Shift left elements
-    #print_matrix(mat)
-    while i < bottom:
-        temp = mat[i][j]
-        mat[i][j] = back
-        back = temp
-        i += 1
-    #print_matrix(mat)
-    # Decrease the i and increase j
-    i -= 1
-    j += 1
-    # Shift bottom elements
-    while j < right: 
-        temp = mat[i][j]
-        mat[i][j] = back
-        back = temp
-        j += 1
-    #print_matrix(mat)
-    j -= 1
-    i = bottom - 2
-    # Shift right elements
-    while i >= top:
-        temp = mat[i][j]
-        mat[i][j] = back
-        back = temp
-        i -= 1
-    #print_matrix(mat)
-    i = top
-    j = right - 2
-    # Shift top elements
-    while j >= left:
-        temp = mat[i][j]
-        mat[i][j] = back
-        back = temp
-        j -= 1
-    #print_matrix(mat)
-    #return mat
-        
+    bottom = rows - boundary - 1  # Coz zero indexed
 
-m, n, r = map(int, raw_input().split(' '))
-#print m, n, r
-mat = read_matrix(m, n)
-#print mat
-#mat = rotate_by_1(mat, 0, n, 0, m)
+    if rotate_by == 0:
+        return
+    if (left >= right) or (top >= bottom):
+        return
+
+    _rotate_by_n(mat, rows, cols, left, right, top, bottom, rotate_by)
+    rotate(mat, rows, cols, boundary + 1, rotate_by)
+
+
+def _rotate_by_n(mat, rows, cols, left, right, top, bottom, n):
+    """This method will rotate the matrix by n along the perimeter.
+    Perimeter will be defined by the left, right, top, and bottom values.
+    :param mat: Matrix which is to be rotated.
+    :param rows, cols: Number of rows and columns in the matrix.
+    :param left, right, top, bottom: Perimeter definition as defined in Figure 1.
+    :param n: Number of steps matrix is to be rotated by.
+    """
+    # Calculate length of perimeter of rectangle
+    peri = ((bottom - top) + (right - left)) * 2
+    n %= peri
+    if n == 0:
+        return
+    # Starting point will be top-left corner
+    x = top
+    y = left
+    i = 0
+    """
+    If number of steps walked is integral multiple of number of elements of perimeter, this means we have completed
+    one loop, i.e. we have come to the point we have started
+    Lets say, perimeter 24 and n is 16, and starting point is (0,0), after three walks we will be back to the point
+    (0,0). At this point, we have rotated all three elements by 16. Now, if we continue this we will keep rotating
+    same elements. To avoid this, we have to voluntarily walk one step, so we get to the point (1,0). After three walks
+    of 16, we will be again back to the point (1,0). Again we walk one step. We will continue this until all elements
+    are rotated.
+    """
+    steps_walked = 0
+    pocket = mat[x][y]
+    while i < peri:
+        if i != 0 and steps_walked % peri == 0:
+            # Walk n position, as we have completed one swapping loop on the perimeter
+            x, y = _walk_n_pos(left, right, top, bottom, 1, x, y)
+            pocket = mat[x][y]
+            # No need to do swapping here
+        x1, y1 = _walk_n_pos(left, right, top, bottom, n, x, y)
+        steps_walked += n
+        temp = mat[x1][y1]
+        mat[x1][y1] = pocket
+        pocket = temp
+        x = x1
+        y = y1
+        i += 1
+
+
+def _walk_n_pos(left, right, top, bottom, n, x, y):
+    """
+    Walks and gets next n'th element on perimeter of rectangle
+    :param left, right, top, bottom: Boundaries from the left and top end. This defines perimeter on which we
+            will walk.
+    :param n: Number steps to take
+    :param x, y: From this point on perimeter we will walk.
+    :return: After walking n steps from (x, y), new co-ord (x1, y1) where we reach
+    """
+    x1 = x
+    y1 = y
+    rem = n
+    while rem > 0:
+        where = _where_am_i(left, right, top, bottom, x1, y1)
+        if where == 1:  # I am on the left boundary
+            if rem >= (bottom - x1):  # If I walk n pos, we will cross bottom-left point and be left with pos to walk
+                rem -= bottom - x1
+                x1 = bottom
+            else:  # If I walk n pos, I won't reach bottom-left
+                x1 += rem
+                rem = 0
+        elif where == 2:  # If I'm on bottom boundary
+            if rem >= (right - y1):
+                rem -= right - y1
+                y1 = right
+            else:
+                y1 += rem
+                rem = 0
+        elif where == 3:  # If I'm on right boundary
+            if rem >= (x1 - top):
+                rem -= x1 - top
+                x1 = top
+            else:
+                x1 = x1 - rem
+                rem = 0
+        elif where == 4:  # If I'm on top boundary
+            if rem >= (y1 - left):
+                rem -= y1 - left
+                y1 = left
+            else:
+                y1 = y1 - rem
+                rem = 0
+    return x1, y1
+
+
+def _where_am_i(left, right, top, bottom, x, y):
+    """Finds out where am I on the given boundary of matrix.
+    :param left, right, top, bottom: Left, right, top, and bottom boundary from the left end of matrix resp.
+    :param x, y: X and Y co-ordinates specifying location on 2-D matrix.
+    :return: Returns whether element is on left-edge, right-edge, bottom-edge, or top-edge
+    """
+
+    # TODO: Define enum
+    if y == left and x != bottom:  # We will consider Bottom-Left element on bottom side
+        return 1
+    elif x == bottom and y != right:  # We will consider bottom-right element on right side
+        return 2
+    elif y == right and x != top:  # We will consider top-right element on top side
+        return 3
+    elif x == 0 + top and y != left:  # We will consider top-left element on left side.
+        # P.S. Second condition is redundant code, but kept for the clarity and symmetry
+        return 4
+    else:
+        raise ('Something is not right here')
+
+
+# m - rows
+# n - cols
+# r - how much many times the matrix should be rotated
+mat, m, n, r = read_input_from_stdin()
+# mat, m, n, r = read_input_from_file("input.txt")
+# print mat
+# mat = rotate_by_1(mat, 0, n, 0, m)
 rotate(mat, m, n, 0, r)
 print_matrix(mat)
