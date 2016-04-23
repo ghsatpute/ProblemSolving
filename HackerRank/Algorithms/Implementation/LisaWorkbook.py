@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 # @Author   : Ganesh Satpute
 # @Email    : ghsatpute@gmail.com
-# @Time     : 27 Feb 2016, 09:240 PM
+# @Time     : 23 APR 2016, 03:24 PM
 """
+https://www.hackerrank.com/challenges/larrys-array/
+
 Lisa just got a new math workbook. A workbook contains exercise problems, grouped into chapters.
 
 There are nn chapters in Lisa's workbook, numbered from 11 to nn.

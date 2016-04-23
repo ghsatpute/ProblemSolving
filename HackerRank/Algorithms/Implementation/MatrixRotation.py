@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 # @Author   : Ganesh Satpute
 # @Email    : ghsatpute@gmail.com
-# @Time     : 27 Feb 2016, 09:240 PM
+# @Time     : 27 Feb 2016, 09:24 PM
 
 """
-https://www.hackerrank.com/challenges/matrix-rotation-algo/copy-from/17864306
+https://www.hackerrank.com/challenges/matrix-rotation-algo
 
 You are given a 2D matrix, a, of dimension MxN and a positive integer R. You have to rotate the matrix R times and print the resultant matrix. Rotation should be in anti-clockwise direction.
 
