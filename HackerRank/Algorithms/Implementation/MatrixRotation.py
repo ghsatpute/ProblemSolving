@@ -4,9 +4,6 @@
 # @Email    : ghsatpute@gmail.com
 # @Time     : 27 Feb 2016, 09:240 PM
 
-# TODO: Incomplete, Need to optimize for larger input size
-# Currently rotating one position at a time. Can we rotate by some n in single go?
-
 """
 https://www.hackerrank.com/challenges/matrix-rotation-algo/copy-from/17864306
 
