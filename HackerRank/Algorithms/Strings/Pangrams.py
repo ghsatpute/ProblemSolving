@@ -7,12 +7,12 @@ string = list(raw_input())
 
 aSet = set()
 for i in range(0, len(string)) :
-    if(string[i].isalpha()) :
+    if string[i].isalpha():
         aSet.add(string[i].lower())
-        if(len(aSet) == 26) :
+        if len(aSet) == 26:
             break
         
-if(len(aSet) == 26) :
+if len(aSet) == 26:
     print "pangram"
 else :
     print "not pangram"

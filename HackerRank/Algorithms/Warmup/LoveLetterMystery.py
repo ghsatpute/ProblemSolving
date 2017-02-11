@@ -1,4 +1,3 @@
-
 # @author   : Ganesh Satpute
 # @time     : 22 Apr 2014, 10:42PM
 
@@ -7,13 +6,16 @@ THE LOVE LETTER MYSTERY
 
 Problem Statement
 
-James found a love letter his friend Harry has written for his girlfriend. James is a prankster, so he decides to meddle with the letter. He changes all the words in the letter into palindromes.
+James found a love letter his friend Harry has written for his girlfriend. James is a prankster, so he decides to meddle
+ with the letter. He changes all the words in the letter into palindromes.
 
 To do this, he follows two rules:
 
 He can reduce the value of a letter, e.g. he can change d to c, but he cannot change c to d.
-In order to form a palindrome, if he has to repeatedly reduce the value of a letter, he can do it until the letter becomes a. Once a letter has been changed to a, it can no longer be changed.
-Each reduction in the value of any letter is counted as a single operation. Find the minimum number of operations required to convert a given string into a palindrome.
+In order to form a palindrome, if he has to repeatedly reduce the value of a letter, he can do it until the letter
+becomes a. Once a letter has been changed to a, it can no longer be changed.
+Each reduction in the value of any letter is counted as a single operation. Find the minimum number of operations
+ required to convert a given string into a palindrome.
 
 Input Format
 
@@ -51,23 +53,23 @@ For the fourth test case, cba -> bba -> aba.
 '''
 
 numTestCases = int(raw_input())
-#print "Num of test cases", numTestCases
-for i in range(0, numTestCases) :
+# print "Num of test cases", numTestCases
+for i in range(0, numTestCases):
     inputText = raw_input()
     p = 0
     q = int(len(inputText)) - 1
     changes = 0
-    
-    #print "===-======================"
-    while(p <= q) :
-        if(inputText[p] < inputText[q]) :
+
+    # print "===-======================"
+    while p <= q:
+        if (inputText[p] < inputText[q]):
             # print inputText[p], inputText[q]
             changes += (ord(inputText[q]) - ord(inputText[p]))
             listInputText = list(inputText)
             listInputText[q] = inputText[p]
             inputText = "".join(listInputText)
             # print "P ", p, q, inputText
-        elif(inputText[p] > inputText[q]) :
+        elif inputText[p] > inputText[q]:
             # print inputText[p], inputText[q], inputText
             changes += (ord(inputText[p]) - ord(inputText[q]))
             listInputText = list(inputText)
@@ -76,7 +78,6 @@ for i in range(0, numTestCases) :
             # print "Q ", p, q, inputText
         p += 1
         q -= 1
-        
+
     print changes
     # print "===-======================"
-    

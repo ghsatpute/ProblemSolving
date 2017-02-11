@@ -10,10 +10,10 @@ for i in range(0, numTestCases) :
     str2 = raw_input()
         
     found = False
-    if(len(set(str1) & set(str2)) > 0) :
+    if len(set(str1) & set(str2)) > 0:
         found = True
     
-    if(found) :
+    if found:
         print "YES"
     else :
         print "NO"
