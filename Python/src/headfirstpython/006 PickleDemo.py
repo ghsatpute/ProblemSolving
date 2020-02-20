@@ -9,10 +9,10 @@ import pickle
 
 list = ['a','b','c','d','e','f','g','h']
 
-with open("006 PickleDemo.txt","wb") as outdata :
+with open("006 PickleDemo.txt", "wb") as outdata :
     pickle.dump(list, outdata)
 
-with open("006 PickleDemo.txt","rb") as indata :
+with open("006 PickleDemo.txt", "rb") as indata :
     mylist = pickle.load(indata)
 
 print(mylist)
