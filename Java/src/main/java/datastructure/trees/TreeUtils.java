@@ -39,7 +39,7 @@ public class TreeUtils {
         eNode.left = jNode;
 
         BinaryTreeNode<String> kNode = createTreeNode("K");
-        gNode.left: = kNode;
+        gNode.left = kNode;
 
         return root;
     }
