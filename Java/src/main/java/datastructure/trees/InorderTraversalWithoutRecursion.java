@@ -5,11 +5,6 @@ import java.util.Stack;
 import static datastructure.trees.TreeUtils.createTree;
 
 public class InorderTraversalWithoutRecursion {
-    public static void main(String[] args) {
-        BinaryTreeNode<String> tree = createTree();
-
-        inorderTraversalWithoutRecursion(tree);
-    }
 
     public static String inorderTraversalWithoutRecursion(BinaryTreeNode<String> tree) {
         StringBuilder output = new StringBuilder();

@@ -12,7 +12,6 @@ public class TreeUtils {
          *
          *   H     I  J         K
          *
-         * HDIBJEAFCKG
          */
         BinaryTreeNode<String> root = createTreeNode("A");
 
