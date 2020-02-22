@@ -1,8 +1,8 @@
-package datastructure.trees;
+package datastructure.trees.problems;
+
+import datastructure.trees.BinaryTreeNode;
 
 import java.util.Stack;
-
-import static datastructure.trees.TreeUtils.createTree;
 
 public class InorderTraversalWithoutRecursion {
 

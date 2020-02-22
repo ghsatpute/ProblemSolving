@@ -1,11 +1,13 @@
-package datastructure.trees;
+package datastructure.trees.problems;
+
+import datastructure.trees.BinaryTreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class LevelOrderTraversal {
 
-    static String levelOrderTraversal(BinaryTreeNode<String> tree) {
+    public static String levelOrderTraversal(BinaryTreeNode<String> tree) {
         Queue<BinaryTreeNode<String>> queue = new LinkedList<>();
         queue.add(tree);
 

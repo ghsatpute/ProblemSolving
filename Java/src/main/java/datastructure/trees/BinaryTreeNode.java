@@ -1,9 +1,9 @@
 package datastructure.trees;
 
 public class BinaryTreeNode<T> {
-    BinaryTreeNode<T> left;
-    BinaryTreeNode<T> right;
-    T data;
+    public BinaryTreeNode<T> left;
+    public BinaryTreeNode<T> right;
+    public T data;
 
     public BinaryTreeNode() {}
 

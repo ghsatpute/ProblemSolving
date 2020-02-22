@@ -1,4 +1,6 @@
-package datastructure.trees;
+package datastructure.trees.problems;
+
+import datastructure.trees.BinaryTreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
