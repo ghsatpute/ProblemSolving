@@ -2,7 +2,7 @@ package datastructure.trees;
 
 public class TreeUtils {
 
-    public static BinaryTreeNode<String> createTree() {
+    public static BinaryTreeNode<String> createBinaryTree() {
         /*
          *               A
          *
@@ -12,6 +12,10 @@ public class TreeUtils {
          *
          *   H     I  J         K
          *
+         * InOrder: HDIBJEAFCKG
+         * PreOrder: ABDHIEJCFGK
+         * PostOrder: HIDJEBFKGCA
+         * ZigZag Traversal: ACBDEFGKJIH
          */
         BinaryTreeNode<String> root = createTreeNode("A");
 
