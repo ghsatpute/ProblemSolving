@@ -96,6 +96,4 @@ public class BinarySearchTreeTest {
 
         assertNull(result);
     }
-
-
 }

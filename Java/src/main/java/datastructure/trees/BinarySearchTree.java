@@ -1,59 +1,65 @@
 package datastructure.trees;
 
-import javafx.util.Pair;
-
 public class BinarySearchTree<T extends Comparable<T>> {
     BinaryTreeNode<T> tree;
 
-    public void insert(BinaryTreeNode<T> node) {
-        Pair<BinaryTreeNode<T>, BinaryTreeNode<T>> searchResult = searchWithParent(node.data);
+    private class BinarySearchTreeResult {
+        BinaryTreeNode<T> parent; // If node is not found it'll still set this node.
+        BinaryTreeNode<T> node;
 
-        // Empty tree
-        if (searchResult == null) {
+        private BinarySearchTreeResult(BinaryTreeNode<T> parent, BinaryTreeNode<T> node) {
+            this.parent = parent;
+            this.node = node;
+        }
+    }
+
+    public void insert(BinaryTreeNode<T> node) {
+
+        if (tree == null) {
             tree = node;
             return;
         }
 
+        BinarySearchTreeResult searchResult = searchWithParent(node.data);
+
         // Data already exist, do nothing
-        BinaryTreeNode<T> existingNode = searchResult.getValue();
-        if (existingNode != null) {
+        if (searchResult.node != null) {
             return;
         }
 
-        BinaryTreeNode<T> parent = searchResult.getKey();
+        BinaryTreeNode<T> parent = searchResult.parent;
 
         if (node.data.compareTo(parent.data) < 0) {
-            searchResult.getKey().left = node;
+            parent.left = node;
         } else {
-            searchResult.getKey().right = node;
+            parent.right = node;
         }
     }
 
     public BinaryTreeNode<T> search(T data) {
-        Pair<BinaryTreeNode<T>, BinaryTreeNode<T>> searchResult = searchWithParent(data);
-        if (searchResult != null) {
-            return searchResult.getValue();
-        }
-        return null;
+        BinarySearchTreeResult searchResult = searchWithParent(data);
+
+        return searchResult.node;
     }
 
-    private Pair<BinaryTreeNode<T>, BinaryTreeNode<T>> searchWithParent(T data) {
+    private BinarySearchTreeResult searchWithParent(T data) {
         if (tree == null) {
-            return null;
+            return new BinarySearchTreeResult(null, null);
         }
         BinaryTreeNode<T> parent = null;
         BinaryTreeNode<T> current = tree;
         while (current != null) {
-            parent = current;
             if (data == current.data) {
-                return new Pair<>(parent, current);
+                return new BinarySearchTreeResult(parent, current);
             } else if (data.compareTo(current.data) < 0) {
+                parent = current;
                 current = current.left;
             } else if (data.compareTo(current.data) > 0) {
+                parent = current;
                 current = current.right;
             }
         }
 
-        return new Pair<>(parent, null);
+        return new BinarySearchTreeResult(parent, null);
     }
 }
