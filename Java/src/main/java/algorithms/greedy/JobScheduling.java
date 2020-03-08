@@ -1,8 +1,5 @@
 package algorithms.greedy;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +13,7 @@ public class JobScheduling {
 
 
         @Override
-        public int compareTo(@NotNull JobScheduling.Job o) {
+        public int compareTo(JobScheduling.Job o) {
             // Do reverse compare so we get max profit elements at first
             return Integer.compare(o.profit, this.profit);
         }
