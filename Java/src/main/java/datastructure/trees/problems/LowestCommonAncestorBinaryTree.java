@@ -4,6 +4,7 @@ import datastructure.trees.BinaryTreeNode;
 
 public class LowestCommonAncestorBinaryTree {
 
+    // TODO: This one doesn't handle scenario where one of the node is not present.
     public static <T> BinaryTreeNode<T> calculate(BinaryTreeNode<T> root, T data1, T data2) {
         if (root == null) return null;
 
