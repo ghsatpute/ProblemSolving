@@ -28,4 +28,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         # Avoid 'java: not found' error: https://community.sonarsource.com/t/cannot-run-sonarsource-sonarcloud-github-action-master-java-not-found/14922
-        JAVA_HOME: '':  
+        JAVA_HOME: ''
