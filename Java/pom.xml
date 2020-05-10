@@ -48,5 +48,9 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <sonar.projectKey>ghsatpute_ProblemSolving</sonar.projectKey>
+        <sonar.organization>ghsatpute</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.login>86d632ef271e96743f3cb3143ee5e4c9d3e1d4b3</sonar.login>
     </properties>
 </project>
