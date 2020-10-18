@@ -23,15 +23,6 @@ public abstract class AbstractHeap<T extends Comparable<T>> {
         heap.set(index1, temp);
     }
 
-    protected boolean isSmaller(int index1, int index2) {
-        return heap.get(index1).compareTo(heap.get(index2)) < 0;
-    }
-
-    protected boolean isGreater(int index1, int index2) {
-        return heap.get(index1).compareTo(heap.get(index2)) > 0;
-    }
-
-
     protected int getParentsLocation(int parentLocation) {
         return (int) Math.round(Math.floor(parentLocation / 2.0));
     }

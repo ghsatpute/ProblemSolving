@@ -44,7 +44,7 @@ public class MinHeap<T extends Comparable<T>> extends AbstractHeap<T> {
                     && !isSmaller(currentIndex, leftIndex)) {
                 swap(currentIndex, leftIndex);
                 break;
-            } else if (isSmaller(currentIndex, leftIndex) // Both children are present, both are smaller
+            } else if (isSmaller(currentIndex, leftIndex) // Both children are present, both are greater
                     && isSmaller(currentIndex, rightIndex)) {
                 break;
             } else if (isSmaller(leftIndex, rightIndex)) { // Both children are present, left is smaller
@@ -56,5 +56,9 @@ public class MinHeap<T extends Comparable<T>> extends AbstractHeap<T> {
             }
         }
         return popped;
+    }
+
+    protected boolean isSmaller(int index1, int index2) {
+        return heap.get(index1).compareTo(heap.get(index2)) < 0;
     }
 }

@@ -37,7 +37,7 @@ public class MaxHeap<T extends Comparable<T>> extends AbstractHeap<T> {
                     && !isGreater(currentIndex, leftIndex)) {
                 swap(currentIndex, leftIndex);
                 break;
-            } else if (isGreater(currentIndex, leftIndex) // Both children are present, both are greater than current
+            } else if (isGreater(currentIndex, leftIndex) // Both children are present, both are smaller than current
                     && isGreater(currentIndex, rightIndex)) {
                 break;
             } else if (isGreater(leftIndex, rightIndex)) { // Both children are present, left is greater
@@ -50,4 +50,9 @@ public class MaxHeap<T extends Comparable<T>> extends AbstractHeap<T> {
         }
         return popped;
     }
+
+    protected boolean isGreater(int index1, int index2) {
+        return heap.get(index1).compareTo(heap.get(index2)) > 0;
+    }
+
 }

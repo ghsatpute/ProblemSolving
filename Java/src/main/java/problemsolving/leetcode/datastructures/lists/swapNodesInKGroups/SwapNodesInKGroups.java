@@ -70,6 +70,29 @@ public class SwapNodesInKGroups {
         return newHead;
     }
 
+    public ListNode reverseKGroup2(ListNode head, int k) {
+        if (head == null) {
+            return null;
+        }
+        ListNode current = head;
+        ListNode next = null;
+        ListNode prev = null;
+        int count = 0;
+        while (count < k && current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+            count++;
+        }
+
+        if (next != null) {
+            head.next = reverseKGroup2(next, k);
+        }
+
+        return prev;
+    }
+
     private boolean isKElementsPresentAhead(ListNode current, int k) {
         int i = 0;
         while (i < k && current != null) {
