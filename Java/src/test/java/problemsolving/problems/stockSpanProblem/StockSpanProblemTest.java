@@ -1,4 +1,4 @@
-package problemsolving.problems;
+package problemsolving.problems.stockSpanProblem;
 
 import org.junit.Test;
 
