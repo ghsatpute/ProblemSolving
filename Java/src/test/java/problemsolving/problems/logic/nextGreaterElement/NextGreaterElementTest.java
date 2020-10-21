@@ -1,4 +1,4 @@
-package problemsolving.problems.nextGreaterElement;
+package problemsolving.problems.logic.nextGreaterElement;
 
 import org.junit.Test;
 

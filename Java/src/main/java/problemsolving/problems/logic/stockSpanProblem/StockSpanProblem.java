@@ -1,4 +1,4 @@
-package problemsolving.problems.stockSpanProblem;
+package problemsolving.problems.logic.stockSpanProblem;
 
 import java.util.Stack;
 

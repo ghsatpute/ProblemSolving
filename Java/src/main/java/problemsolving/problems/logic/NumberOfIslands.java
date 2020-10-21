@@ -1,6 +1,7 @@
 package problemsolving.problems.logic;
 
 public class NumberOfIslands {
+    // https://www.geeksforgeeks.org/find-number-of-islands/
     public static int solve(int[][] mat) {
         int numOfMatrices = 0;
 

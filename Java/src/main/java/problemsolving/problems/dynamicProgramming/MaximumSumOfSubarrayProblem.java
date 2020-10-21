@@ -1,6 +1,6 @@
 package problemsolving.problems.dynamicProgramming;
 
-public class MaximumSubarrayProblem {
+public class MaximumSumOfSubarrayProblem {
     public static int solve(int[] input) {
         int[] sums = new int[input.length];
         sums[0] = input[0];
