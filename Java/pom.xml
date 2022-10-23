@@ -15,6 +15,12 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
+                    <excludes>
+                        <exclude>**/courses/coursera/**/*.java</exclude>
+                    </excludes>
+                    <testExcludes>
+                        <exclude>**/courses/coursera/**/*.java</exclude>
+                    </testExcludes>
                 </configuration>
             </plugin>
         </plugins>
