@@ -1,6 +1,5 @@
 package problemsolving.leetcode.logic.largestAreaInHistogram;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 public class LargestAreaInHistogram {
@@ -44,7 +43,7 @@ public class LargestAreaInHistogram {
             stack.push(i);
         }
 
-        System.out.println(Arrays.toString(leftLimits));
+        // System.out.println(Arrays.toString(leftLimits));
     }
 
     private void calculateRightLimits(int[] heights, int[] rightLimits) {
@@ -63,7 +62,7 @@ public class LargestAreaInHistogram {
             stack.push(i);
         }
 
-        System.out.println(Arrays.toString(rightLimits));
+        // System.out.println(Arrays.toString(rightLimits));
     }
 
 }
