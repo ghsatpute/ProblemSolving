@@ -1,4 +1,4 @@
-package problemsolving.leetcode.algorithm.dynamicProgramming.uniqueBinarySearchTress;
+package problemsolving.leetcode.algorithm.dynamicProgramming.uniqueBinarySearchTrees;
 
 import java.util.Arrays;
 
