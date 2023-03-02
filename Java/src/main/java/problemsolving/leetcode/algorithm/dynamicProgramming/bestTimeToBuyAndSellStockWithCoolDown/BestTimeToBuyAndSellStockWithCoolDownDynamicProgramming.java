@@ -44,7 +44,7 @@ public class BestTimeToBuyAndSellStockWithCoolDownDynamicProgramming {
 
             memo.put(key, Math.max(profitWithCoolDown, profitWithBuy));
         } else {
-            // Sell at this level
+            // Sell at this level and jump 2 steps
             // System.out.println(getTabNTimes(currentIndex) + "Selling at level " + currentIndex);
             profitWithSell = prices[currentIndex] + maxProfit(prices, memo, currentIndex + 2, false);
 
