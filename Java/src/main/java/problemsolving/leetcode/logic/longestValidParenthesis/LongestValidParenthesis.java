@@ -18,6 +18,7 @@ public class LongestValidParenthesis {
                 stack.push(i);
             } else if (s.charAt(i) == ')') {
                 if (stack.size() > 1 && s.charAt(stack.peek()) == '(' ) {
+                    stack.pop();
                     max = Math.max(i - stack.peek(), max);
                 } else {
                     stack.push(i);
