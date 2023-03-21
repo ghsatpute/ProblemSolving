@@ -1,4 +1,4 @@
-package problemsolving.leetcode.logic.permutations;
+package problemsolving.leetcode.algorithm.backtracking.permutations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ public class Permutations {
         return permute(nums, new boolean[nums.length], new ArrayList<>(), new ArrayList<>());
     }
 
-    public List<List<Integer>> permute(int[] nums, boolean[] used, List<Integer> path, List<List<Integer>> solutions) {
+    private List<List<Integer>> permute(int[] nums, boolean[] used, List<Integer> path, List<List<Integer>> solutions) {
         if (nums.length == path.size()) {
             List<Integer> solution = new ArrayList<>(path);
 

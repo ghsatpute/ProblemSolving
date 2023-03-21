@@ -26,7 +26,9 @@ Output: [[1]]
 * -10 <= nums[i] <= 10
 * All the integers of nums are unique.
 
-# Solution Tracing 
+# Solution Tracing
+This article helped me
+https://leetcode.com/problems/permutations/solutions/685868/dfs-backtracking-python-java-javascript-picture/
 ```
 nums = [1, 2, 3]
 used = [0, 0, 0]

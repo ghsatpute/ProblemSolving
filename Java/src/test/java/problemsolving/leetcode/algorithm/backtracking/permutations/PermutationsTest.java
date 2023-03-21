@@ -1,4 +1,4 @@
-package problemsolving.leetcode.logic.permutations;
+package problemsolving.leetcode.algorithm.backtracking.permutations;
 
 import java.util.List;
 
