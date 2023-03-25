@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ReorderRoutesToMakeAllPathsLeadsToZero {
+public class ReorderRoutesToMakeAllPathsLeadsToZeroFirstTry {
     private final Map<Integer, List<Integer>> neighbours =  new HashMap<>();
     private final Map<Integer, List<Integer>> directedNeighbours =  new HashMap<>();
     private boolean[] visited;
