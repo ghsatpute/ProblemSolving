@@ -28,7 +28,6 @@ public class SearchInRotatedSortedArray {
             }
         }
         int mid = (start + end) / 2;
-        System.out.println("Mid is " + mid);
         if (target <= array[mid]) {
             return binarySearch(array, start, mid, target);
         } else {
