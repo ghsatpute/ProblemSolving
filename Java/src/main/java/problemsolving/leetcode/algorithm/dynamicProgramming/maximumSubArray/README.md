@@ -45,3 +45,6 @@ Output: `-2147483647`
 
 * `1 <= nums.length <= 2 * 10^4`
 * `-2^31 <= nums[i] <= 2^31 - 1`
+
+# Solution Reference 
+https://www.youtube.com/watch?v=2MmGzdiKR9Y&ab_channel=BackToBackSWE 
